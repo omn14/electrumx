@@ -316,6 +316,33 @@ class AuxPowMixin(object):
         deserializer = cls.DESERIALIZER(block)
         return deserializer.read_header(height, cls.BASIC_HEADER_SIZE)
 
+class Scicoin(Coin):
+    NAME = "Scicoin"
+    SHORTNAME = "SCC"
+    NET = "mainnet"
+    XPUB_VERBYTES = bytes.fromhex("28ff6f17")
+    XPRV_VERBYTES = bytes.fromhex("28ffabac")
+    P2PKH_VERBYTE = bytes.fromhex("00")
+    P2SH_VERBYTES = [bytes.fromhex("05")]
+    WIF_BYTE = bytes.fromhex("80")
+    GENESIS_HASH = ('0000000058dc2a554009c0e819a4360a'
+		    'eb4e97329a25c826acb229c3c5cc9820')
+
+#('000000000019d6689c085ae165831e93'
+#                    '4ff763ae46a2a6c172b3f1b60a8ce26f')
+    TX_COUNT = 13
+    TX_COUNT_HEIGHT = 13
+    TX_PER_BLOCK = 1
+    RPC_PORT = 7221
+    PEERS = []
+
+
+class ScicoinSegwit(Scicoin):
+    NET = "scicoin-segwit"
+    DESERIALIZER = DeserializerSegWit
+
+
+
 
 class Bitcoin(Coin):
     NAME = "Bitcoin"
